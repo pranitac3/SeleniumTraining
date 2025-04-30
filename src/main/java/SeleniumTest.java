@@ -1,16 +1,12 @@
 import org.apache.commons.io.FileUtils;
-import org.junit.Assert;
-import org.junit.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-//import org.openqa.selenium.io.FileHandler;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+
 
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.time.Duration;
 import java.util.Date;
 
 public class SeleniumTest {
@@ -116,13 +112,13 @@ public class SeleniumTest {
         if (hideshowtb)
         {
             System.out.println(hideshowtb);
-            Assert.assertTrue("Displayed", hideshowtb);
+            //Assert.assertTrue("Displayed", hideshowtb);
         }
         else {
 
             System.out.println(hideshowtb);
             //Assert.assertTrue("Displayed", hideshowtb);
-            Assert.assertFalse("false condititon satisfied", hideshowtb);
+            //Assert.assertFalse("false condititon satisfied", hideshowtb);
         }
 
 

@@ -1,0 +1,8 @@
+<suite name="MySuite">
+    <test name="MyTest">
+        <classes>
+            <class name="testngpractice.TestngPractice"/>
+            <class name="testngpractice.TestngAnnotationsSequenceDemo"/>
+        </classes>
+    </test>
+</suite>
