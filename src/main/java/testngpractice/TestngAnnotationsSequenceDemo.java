@@ -1,10 +1,12 @@
 package testngpractice;
 
+//import org.testng.annotations.*;
+
 import org.testng.annotations.*;
 
 public class TestngAnnotationsSequenceDemo {
 
-    @Test (priority = 0)
+    @Test(priority = 0)
     public void test1() {
         System.out.println("@Test 1");
     }

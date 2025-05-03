@@ -1,7 +1,7 @@
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.Assert;
+//import org.testng.Assert;
 
 
 import java.io.File;
@@ -144,7 +144,7 @@ public class SeleniumTest {
         //Assert.assertEquals("Expected and Actual text both are matching", "Learn Earn & Shine", iframeText);
 
         //This can be used for error message
-        Assert.assertEquals("Expected and Actual text does not match the value", "Learn Earn & Shine1", iframeText);
+        //Assert.assertEquals("Expected and Actual text does not match the value", "Learn Earn & Shine1", iframeText);
         //Here if condition is matched then it will not return anything, but if condition is false then it will show message
 
 

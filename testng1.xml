@@ -1,0 +1,21 @@
+<suite name="BrowserSuite" parallel="tests">
+    <test name="ChromeTest">
+        <parameter name="Browser" value="chrome"/>
+        <classes>
+            <class name="testngpractice.DataProviderTest"/>
+        </classes>
+    </test>
+
+    <test name="FirefoxTest">
+        <parameter name="Browser" value="firefox"/>
+        <classes>
+            <class name="testngpractice.DataProviderTest"/>
+        </classes>
+    </test>
+    <test name="EdgeTest">
+        <parameter name="Browser" value="firefox"/>
+        <classes>
+            <class name="testngpractice.DataProviderTest"/>
+        </classes>
+    </test>
+</suite>
