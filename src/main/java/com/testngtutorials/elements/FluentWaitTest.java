@@ -17,8 +17,7 @@ public class FluentWaitTest extends AllMethods {
     WebDriverWait wait;
 
     @BeforeClass
-    public void invokeBrowser()
-    {
+    public void invokeBrowser() {
         driver = browserLaunchTestng();
 
     }
@@ -31,10 +30,10 @@ public class FluentWaitTest extends AllMethods {
         //Fluent wait
 
         FluentWait<WebDriver> wait = new FluentWait<>(driver) //fluent wait is collection
-        .withTimeout(Duration.ofSeconds(10)) // Set maximum wait time to 10 seconds
-        .pollingEvery(Duration.ofMillis(500))// Check every 500 milliseconds
-         .ignoring(NoSuchElementException.class)//ignore this type of exception and still execute till given time
-        .withMessage("Element not found");
+                .withTimeout(Duration.ofSeconds(10)) // Set maximum wait time to 10 seconds
+                .pollingEvery(Duration.ofMillis(500))// Check every 500 milliseconds
+                .ignoring(NoSuchElementException.class)//ignore this type of exception and still execute till given time
+                .withMessage("Element not found");
 
         //For Fluent Wait only
         WebElement dynamicElement;

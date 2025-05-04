@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class HeadLessBrowser extends AllMethods{
+public class HeadLessBrowser extends AllMethods {
 
     ChromeOptions chromeoptions;
 
