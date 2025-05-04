@@ -36,7 +36,7 @@ public class FluentWaitTest extends AllMethods {
          .ignoring(NoSuchElementException.class)//ignore this type of exception and still execute till given time
         .withMessage("Element not found");
 
-        //Fir Fluent Wait only
+        //For Fluent Wait only
         WebElement dynamicElement;
         dynamicElement = wait.until(webDriver -> webDriver.findElement(By.id("uploadFile"))); //This -> called lamda
 

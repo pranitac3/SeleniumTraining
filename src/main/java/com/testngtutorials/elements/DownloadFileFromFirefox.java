@@ -54,7 +54,6 @@ public class DownloadFileFromFirefox extends AllMethods {
     @Test(priority =1)
     public void downloadFile() {
 
-        //firefoxptions = new FirefoxOptions();
         WebElement fu = driver.findElement(By.xpath("//a[@href='upload-download.php']"));
         fu.click();
         driver.findElement(By.cssSelector("#downloadButton")).click();
