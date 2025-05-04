@@ -21,11 +21,26 @@ public class DownloadFileFromFirefox extends AllMethods {
     @BeforeClass
     public void invokeFireFoxBrowser() {
         //initialization is compulsory
-        driver = new FirefoxDriver();
+        firefoxProfile = new FirefoxProfile();
+        firefoxProfile.setPreference("browser.download.folderList", 2); // 2 means custom path
+        firefoxProfile.setPreference("browser.download.manager.showWhenStarting:", false);
+
+
+        String downloadDirPath = System.getProperty("user.dir") +"\\FileUpload";
+        System.out.println(downloadDirPath);
+        firefoxProfile.setPreference("browser.download.dir", downloadDirPath);
+
+        firefoxProfile.setPreference("browser.helperApps.neverAsk.saveToDisk", "image/vnd.microsoft.icon");
+
+        firefoxptions = new FirefoxOptions();
+        firefoxptions.setProfile(firefoxProfile);
+        driver = new FirefoxDriver(firefoxptions);
         System.setProperty("webdriver.gecko.driver", "C:\\AutomationSetup\\geckodriver.exe");
         driver.get("https://www.tutorialspoint.com/selenium/practice/text-box.php");
         driver.getTitle();
         driver.manage().window().maximize();
+
+
     }
 
 //    @Test(priority = 1)
@@ -43,11 +58,8 @@ public class DownloadFileFromFirefox extends AllMethods {
         WebElement fu = driver.findElement(By.xpath("//a[@href='upload-download.php']"));
         fu.click();
         driver.findElement(By.cssSelector("#downloadButton")).click();
-        firefoxProfile = new FirefoxProfile();
-        firefoxProfile.setPreference("browser.download.folderList", 2);
-        //firefoxProfile.setPreference("browser.download.manager.showWhenStarting:", false);
-        firefoxProfile.setPreference("browser.download.dir", "FileUpload//");
-        //firefoxProfile.setPreference("browser.helperApps.neverAsk.saveToDisk", "image/vnd.microsoft.icon");
+
+
 
 
 

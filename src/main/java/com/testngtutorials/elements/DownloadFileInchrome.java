@@ -14,19 +14,15 @@ import java.util.Map;
 public class DownloadFileInchrome {
 
     WebDriver driver;
-    ChromeOptions chromeoptions;
+    ChromeOptions chromeoptions = new ChromeOptions();
     String downloadDir = "FileUpload//";
-
-
-
+    Map<String, Object> prefs = new HashMap<>();
 
     @BeforeClass
     public void invokeChrome(){
 
-        chromeoptions = new ChromeOptions();
-        chromeoptions.addArguments("--disable-popup-blocking");
-
-        driver = new ChromeDriver(chromeoptions);
+        //chromeoptions.addArguments("--disable-popup-blocking");
+        driver = new ChromeDriver();
         driver.get("https://www.tutorialspoint.com/selenium/practice/text-box.php"); // waiting upto page load
         driver.manage().window().maximize(); //to maximize window
         //System.setProperty("webdriver.chrome.driver", "C:\\Users\\OVI\\OneDrive\\Desktop\\SeleniumTraining\\chromedriver-win64\\chromedriver.exe");
@@ -39,8 +35,20 @@ public class DownloadFileInchrome {
 
         WebElement fu = driver.findElement(By.xpath("//a[@href='upload-download.php']"));
         fu.click();
-        driver.findElement(By.cssSelector("#downloadButton")).click();
-        chromeoptions.addArguments("download.default_directory", downloadDir);
+//      driver.findElement(By.cssSelector("#downloadButton")).click();
+//      chromeoptions.addArguments("download.default_directory", downloadDir);
+
+        Map<String, Object> prefs = new HashMap<>();
+        prefs.put("download.default_directory", downloadDir);
+        prefs.put("download.prompt_for_download", false);
+        prefs.put("safebrowsing.enabled", true);
+
+        chromeoptions = new ChromeOptions();
+        chromeoptions.setExperimentalOption("prefs", prefs);
+        WebDriver driver = new ChromeDriver(chromeoptions);
+
+
+
 
     }
 }
