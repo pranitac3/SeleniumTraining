@@ -26,7 +26,7 @@ public class DownloadFileFromFirefox extends AllMethods {
         firefoxProfile.setPreference("browser.download.manager.showWhenStarting:", false);
 
 
-        String downloadDirPath = System.getProperty("user.dir") +"\\FileUpload";
+        String downloadDirPath = System.getProperty("user.dir") + "\\FileUpload";
         System.out.println(downloadDirPath);
         firefoxProfile.setPreference("browser.download.dir", downloadDirPath);
 
@@ -51,16 +51,12 @@ public class DownloadFileFromFirefox extends AllMethods {
 //        driver.findElement(By.id("uploadFile")).click();
 //    }
 
-    @Test(priority =1)
+    @Test(priority = 1)
     public void downloadFile() {
 
         WebElement fu = driver.findElement(By.xpath("//a[@href='upload-download.php']"));
         fu.click();
         driver.findElement(By.cssSelector("#downloadButton")).click();
-
-
-
-
 
 
     }
