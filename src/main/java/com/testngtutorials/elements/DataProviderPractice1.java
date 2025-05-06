@@ -1,19 +1,22 @@
 package com.testngtutorials.elements;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.Date;
 
 public class DataProviderPractice1 {
 
     WebDriver driver;
+
+    //Login Test - data provider working - But need to ask about 'how to take screenshot after each test"
 
     @BeforeMethod
     public void setUp() {
@@ -24,7 +27,7 @@ public class DataProviderPractice1 {
 
     }
 
-    @Test(dataProvider = "loginData", dataProviderClass = DataProviderExample.class)
+    @Test(dataProvider = "loginData", dataProviderClass = DataProviderPractice1Example.class)
     public void testLogin(String username, String email, String address) {
 
         //Assert
@@ -46,8 +49,24 @@ public class DataProviderPractice1 {
 
     }
 
-    @AfterMethod
-    public void tearDown() {
-        driver.quit();
+    @AfterSuite
+    public void takeScreenshots() throws IOException {
+        TakesScreenshot TS = (TakesScreenshot) driver; //This is interface but this does not have any class
+        File srcFile = TS.getScreenshotAs(OutputType.FILE); //This is source file
+
+        String TimeStamp = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+
+        FileUtils.copyFile(srcFile, new File("Screenshots//"+ TimeStamp +".jpg"));
+
+        //String screenshotName = "C:\\Users\\OVI\\OneDrive\\Desktop\\SeleniumTraining\\Screenshots\\" + srcFile.getName() + ".png"
+        //FileHandler.copy(srcFile, new File(screenshotName));
+
+        System.out.println("Screenshot taken for test: " + srcFile.getName());
+
     }
+
+//    @AfterMethod
+//    public void tearDown() {
+//        driver.quit();
+//    }
 }

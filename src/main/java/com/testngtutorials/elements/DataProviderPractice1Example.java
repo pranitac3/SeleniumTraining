@@ -2,7 +2,7 @@ package com.testngtutorials.elements;
 
 import org.testng.annotations.DataProvider;
 
-public class DataProviderExample {
+public class DataProviderPractice1Example {
 
     @DataProvider(name = "loginData")
     public Object[][] provideLoginData() {
