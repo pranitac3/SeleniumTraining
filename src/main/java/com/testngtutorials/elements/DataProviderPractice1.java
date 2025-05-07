@@ -27,8 +27,17 @@ public class DataProviderPractice1 {
 
     }
 
+    @DataProvider(name = "loginData")
+    public Object[][] provideLoginData() {
+        return new Object[][]{
+                {"user1", "abcd@abcd.com", "Pune"},
+                {"user2", "pqrs@pqrs.com", "Mumbai"},
+                {"user3", "stuv@stuv.com", "Delhi"}
+        };
+    }
+
     @Test(dataProvider = "loginData", dataProviderClass = DataProviderPractice1Example.class)
-    public void testLogin(String username, String email, String address) {
+    public void testLogin(String username, String email, String address) throws IOException {
 
         //Assert
         WebElement textverify = driver.findElement(By.xpath("//div//h1[text()='Selenium - Automation Practice Form']"));
@@ -44,12 +53,13 @@ public class DataProviderPractice1 {
         emailField.sendKeys(email);
         addressField.sendKeys(address);
         submitButton.click();
+        takeScreenshots();
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
     }
 
-    @AfterSuite
+    @AfterSuite //due to AfterSuite only one time it got executed only once. So need to use AfterMethod annotation, so that it will call after every test execution. Or call method in @test as like #62 line.
     public void takeScreenshots() throws IOException {
         TakesScreenshot TS = (TakesScreenshot) driver; //This is interface but this does not have any class
         File srcFile = TS.getScreenshotAs(OutputType.FILE); //This is source file

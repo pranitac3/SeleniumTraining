@@ -19,18 +19,21 @@ public class DataProviderPractice {
     }
 
     @Test(dataProvider = "invokeBrowser", dataProviderClass = DataProviderPractice.class)
-    public void chromeinvoke(String chrome) {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\OVI\\OneDrive\\Desktop\\SeleniumTraining\\chromedriver-win64\\chromedriver.exe");
-        ChromeDriver driver = new ChromeDriver();
-        driver.get("https://rahulshettyacademy.com/AutomationPractice/");
-        driver.manage().window().maximize();
+    public void chromeinvoke(String browserName)
+    {
+        if(browserName.equals("chrome")) {
+            System.setProperty("webdriver.chrome.driver", "C:\\Users\\OVI\\OneDrive\\Desktop\\SeleniumTraining\\chromedriver-win64\\chromedriver.exe");
+            ChromeDriver driver = new ChromeDriver();
+            driver.get("https://rahulshettyacademy.com/AutomationPractice/");
+            driver.manage().window().maximize();
+        }
+        else
+        {
+            System.setProperty("webdriver.gecko.driver", "C:\\AutomationSetup\\geckodriver.exe");
+            FirefoxDriver driver = new FirefoxDriver();
+            driver.get("https://rahulshettyacademy.com/AutomationPractice/");
+            driver.manage().window().maximize();
+        }
     }
 
-    @Test(dataProvider = "invokeBrowser", dataProviderClass = DataProviderPractice.class)
-    public void firefoxinvoke(String firefox) {
-        System.setProperty("webdriver.gecko.driver", "C:\\AutomationSetup\\geckodriver.exe");
-        FirefoxDriver driver = new FirefoxDriver();
-        driver.get("https://rahulshettyacademy.com/AutomationPractice/");
-        driver.manage().window().maximize();
     }
-}
